@@ -2,7 +2,7 @@
 
 namespace App;
 
-use \ccxt\Bitmex;
+use ccxt\bitmex;
 /**
  * Class Trade
  */
@@ -19,7 +19,7 @@ class Trade{
 
         if($checkPostRequest) {
 
-            $this->exchange = new Bitmex();
+            $this->exchange = new bitmex();
             $this->exchange->apiKey = 'TSG8GU6KNjrzyUzEKbltGTgf';
             $this->exchange->secret = 'rbHSzS3iuZ0wuAtU2NrqwO43HohAaoK7T_J6-lBOUsOZzo2c';
 
