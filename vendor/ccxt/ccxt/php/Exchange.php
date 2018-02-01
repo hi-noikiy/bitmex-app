@@ -338,7 +338,7 @@ abstract class Exchange {
 
     public static function implode_params ($string, $params) {
         foreach ($params as $key => $value)
-            $string = implode ($value, mb_split ('{' . $key . '}', $string));
+            $string = implode ($value, preg_split ('/[{' . $key . '}]+/', $string));
         return $string;
     }
 
@@ -631,10 +631,10 @@ abstract class Exchange {
             foreach ($methods as $http_method => $paths)
                 foreach ($paths as $path) {
 
-                    $splitPath = mb_split ('[^a-zA-Z0-9]', $path);
+                    $splitPath = preg_split ('/[^a-zA-Z0-9]+/', $path);
 
-                    $uppercaseMethod  = mb_strtoupper ($http_method);
-                    $lowercaseMethod  = mb_strtolower ($http_method);
+                    $uppercaseMethod  = strtoupper($http_method);
+                    $lowercaseMethod  = strtolower ($http_method);
                     $camelcaseMethod  = static::capitalize ($lowercaseMethod);
                     $camelcaseSuffix  = implode (array_map (get_called_class() . '::capitalize', $splitPath));
                     $lowercasePath    = array_map ('trim', array_map ('strtolower', $splitPath));
