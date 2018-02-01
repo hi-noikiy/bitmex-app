@@ -248,7 +248,7 @@ abstract class Exchange {
     }
 
     public static function capitalize ($string) {
-        return mb_strtoupper (mb_substr ($string, 0, 1)) . mb_substr ($string, 1);
+        return strtoupper (substr ($string, 0, 1)) . substr ($string, 1);
     }
 
     public static function omit ($array, $keys) {
@@ -641,7 +641,7 @@ abstract class Exchange {
                     $underscoreSuffix = implode ('_', array_filter ($lowercasePath));
 
                     $camelcase  = $type . $camelcaseMethod . static::capitalize ($camelcaseSuffix);
-                    $underscore = $type . '_' . $lowercaseMethod . '_' . mb_strtolower ($underscoreSuffix);
+                    $underscore = $type . '_' . $lowercaseMethod . '_' . strtolower ($underscoreSuffix);
 
                     if (array_key_exists ('suffixes', $options)) {
                         if (array_key_exists ('camelcase', $options['suffixes']))
