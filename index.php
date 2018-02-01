@@ -11,4 +11,7 @@ ini_set('display_errors', 1);
 // Load composer
 require_once 'vendor/autoload.php';
 
-new App\Trade();
+
+use App\Trade;
+
+new Trade();
