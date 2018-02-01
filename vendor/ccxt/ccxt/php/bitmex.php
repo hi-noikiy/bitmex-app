@@ -145,7 +145,7 @@ class bitmex extends Exchange {
             if ($swap) {
                 $type = 'swap';
                 $symbol = $base . '/' . $quote;
-            } else if (mb_strpos ($id, 'B_') !== false) {
+            } else if (strpos ($id, 'B_') !== false) {
                 $prediction = true;
                 $type = 'prediction';
             } else {
@@ -293,7 +293,7 @@ class bitmex extends Exchange {
         );
         if ($since !== null) {
             $ymdhms = $this->YmdHMS ($since);
-            $ymdhm = mb_substr ($ymdhms, 0, 16);
+            $ymdhm = substr ($ymdhms, 0, 16);
             $request['startTime'] = $ymdhm; // starting date $filter for results
         }
         if ($limit !== null)
